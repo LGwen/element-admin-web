@@ -8,7 +8,12 @@
         </div>
       </el-header>
       <el-main class="el-main-contentbox">
-        <router-view></router-view>
+        <div>
+          <multi-tab></multi-tab>
+        </div>
+        <div>
+          <router-view></router-view>
+        </div>
       </el-main>
       <!-- <el-footer>Footer</el-footer> -->
     </el-container>
@@ -18,11 +23,15 @@
 <script>
 import EMenu from "@/components/EMenu/index";
 import UserMenu from "@/components/UserMenu/index";
+import Breadcrumb from "@/components/Breadcrumb/breadcrumb";
+import MultiTab from "@/components/MultiTab/multi-tab"
 import { mapGetters } from "vuex";
 export default {
   components: {
     EMenu,
-    UserMenu
+    UserMenu,
+    Breadcrumb,
+    MultiTab
   },
   computed: {
     ...mapGetters(["addRouters"])
