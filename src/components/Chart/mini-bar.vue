@@ -11,7 +11,7 @@
 
 <script>
 import moment from "moment";
-import "echarts/lib/chart/line";
+import "echarts/lib/chart/bar";
 import "echarts/lib/component/tooltip";
 
 const data = [];
