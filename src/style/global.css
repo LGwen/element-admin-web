@@ -1,0 +1,16 @@
+
+body{
+  padding: 0;
+  margin: 0;
+}
+html,body,#app,.el-main-container{
+  height: 100%;
+}
+.el-main-aside{
+  /* border-right: 1px solid rgba(0, 0, 0, 0.15); */
+  box-shadow: 4px 0 8px rgba(0, 0, 0, 0.15);
+}
+.el-main-header{
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  border-bottom: 1px solid #eee;
+}
