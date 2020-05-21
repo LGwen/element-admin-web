@@ -14,3 +14,9 @@ html,body,#app,.el-main-container{
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
   border-bottom: 1px solid #eee;
 }
+/* ul li */
+ul,li{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}

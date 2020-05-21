@@ -35,7 +35,7 @@ export const rightRouter = [
     children: [
       {
         path: "/admin/home",
-        component: () => import("../views/Dashboard/Dashboard"),
+        component: () => import("../views/Admin/Home"),
         name: "home",
         meta: {
           title: "首页",

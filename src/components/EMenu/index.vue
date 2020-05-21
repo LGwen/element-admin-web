@@ -34,6 +34,8 @@
 
 <script>
 import EMenu from "./menu";
+
+import { triggerWindowResizeEvent } from "../../utils/utils";
 export default {
   components: {
     EMenu
@@ -52,6 +54,7 @@ export default {
   methods: {
     toggleCollapse() {
       this.isCollapse = !this.isCollapse;
+      triggerWindowResizeEvent();
     },
     handleOpen(key, keyPath) {
       console.log(key, keyPath);

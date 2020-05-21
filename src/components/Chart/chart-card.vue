@@ -52,6 +52,11 @@ export default {
   color: rgba(0, 0, 0, 0.45);
   font-size: 14px;
   align-items: center;
+  margin-top: 12px;
+  white-space: nowrap;
+}
+.el-chart-card-content{
+  height: 70px;
 }
 .el-card-content__desc > div:not(:last-child) {
   margin-right: 20px;
@@ -87,7 +92,6 @@ export default {
   font-size: 30px;
   height: 38px;
   line-height: 38px;
-  margin-bottom: 12px;
 }
 .el-chart-card {
   background: #fff;

@@ -1,29 +1,9 @@
-const path = require("path")
-const webpack = require("webpack")
+const path = require("path");
+const webpack = require("webpack");
 // const createThemeColorReplacerPlugin = require("./config/plugin.config")
 
 function resolve(dir) {
-  return path.join(__dirname, dir)
-}
-
-const isProd = process.env.NODE_ENV === "production"
-
-const assetsCDN = {
-  // webpack build externals
-  externals: {
-    // vue: "Vue",
-    // "vue-router": "VueRouter",
-    // vuex: "Vuex",
-    // axios: "axios"
-  },
-  css: [],
-  // https://unpkg.com/browse/vue@2.6.10/
-  js: [
-    "//cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.min.js",
-    "//cdn.jsdelivr.net/npm/vue-router@3.1.3/dist/vue-router.min.js",
-    "//cdn.jsdelivr.net/npm/vuex@3.1.1/dist/vuex.min.js",
-    "//cdn.jsdelivr.net/npm/axios@0.19.0/dist/axios.min.js"
-  ]
+  return path.join(__dirname, dir);
 }
 
 // vue.config.js
@@ -36,14 +16,14 @@ const vueConfig = {
       new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
     ],
     // if prod, add externals
-    externals: isProd ? assetsCDN.externals : {}
+    externals: {}
   },
 
   chainWebpack: config => {
-    config.resolve.alias.set("@$", resolve("src"))
+    config.resolve.alias.set("@$", resolve("src"));
 
-    const svgRule = config.module.rule("svg")
-    svgRule.uses.clear()
+    const svgRule = config.module.rule("svg");
+    svgRule.uses.clear();
     svgRule
       .oneOf("inline")
       .resourceQuery(/inline/)
@@ -56,7 +36,7 @@ const vueConfig = {
       .loader("file-loader")
       .options({
         name: "assets/[name].[hash:8].[ext]"
-      })
+      });
 
     // if prod is on
     // assets require on cdn
@@ -73,9 +53,9 @@ const vueConfig = {
       less: {
         modifyVars: {
           // less vars，customize ant design theme
-          'primary-color': '#b40019',
-          'link-color': '#b40019',
-          'border-radius-base': '4px'
+          "primary-color": "#b40019",
+          "link-color": "#b40019",
+          "border-radius-base": "4px"
         },
         // DO NOT REMOVE THIS LINE
         javascriptEnabled: true
@@ -97,8 +77,8 @@ const vueConfig = {
         "X-Requested-With, content-type, Authorization"
     },
     proxy: {
-      '/user/*': {
-        target: 'http://192.168.1.8:8080',
+      "/user/*": {
+        target: "http://192.168.1.8:8080",
         changeOrigin: true,
         secure: false,
         pathRewrite: { "^/user": "user" }
@@ -110,7 +90,7 @@ const vueConfig = {
   lintOnSave: false,
   // babel-loader no-ignore node_modules/*
   transpileDependencies: []
-}
+};
 
 // // preview.pro.loacg.com only do not use in your production;
 // if (process.env.VUE_APP_PREVIEW === "true") {
@@ -119,4 +99,4 @@ const vueConfig = {
 //   vueConfig.configureWebpack.plugins.push(createThemeColorReplacerPlugin())
 // }
 
-module.exports = vueConfig
+module.exports = vueConfig;
