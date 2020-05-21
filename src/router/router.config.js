@@ -63,6 +63,32 @@ export const rightRouter = [
             meta: { title: "基础表格", keepAlive: false, permission: ["R002"] }
           }
         ]
+      },
+      {
+        path: "/form",
+        component: EmptyLayout,
+        redirect: "/form/base",
+        name: "form",
+        meta: {
+          title: "表单页",
+          icon: "menu",
+          keepAlive: false,
+          permission: ["R002"]
+        },
+        children: [
+          {
+            path: "/form/base",
+            name: "form-base",
+            component: () => import("../views/Form/Form-base"),
+            meta: { title: "基础表单", keepAlive: false, permission: ["R002"] }
+          },
+          {
+            path: "/form/step",
+            name: "form-step",
+            component: () => import("../views/Form/Form-step"),
+            meta: { title: "步骤表单", keepAlive: false, permission: ["R002"] }
+          }
+        ]
       }
     ]
   }

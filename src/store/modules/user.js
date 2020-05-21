@@ -71,7 +71,6 @@ export const user = {
       return new Promise((resolve, reject) => {
         login({ ...data })
           .then(res => {
-            debugger
             const token = res.data;
             Vue.ls.set(ACCESS_TOKEN, token, 7 * 24 * 60 * 60 * 1000);
             commit("SET_TOKEN", token);
