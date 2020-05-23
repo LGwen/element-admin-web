@@ -89,6 +89,32 @@ export const rightRouter = [
             meta: { title: "步骤表单", keepAlive: false, permission: ["R002"] }
           }
         ]
+      },
+      {
+        path: "/list",
+        component: EmptyLayout,
+        redirect: "/list/card",
+        name: "list",
+        meta: {
+          title: "列表页",
+          icon: "menu",
+          keepAlive: false,
+          permission: ["R002"]
+        },
+        children: [
+          {
+            path: "/list/basic",
+            name: "list-card",
+            component: () => import("../views/List/List-basic"),
+            meta: { title: "基础列表", keepAlive: false, permission: ["R002"] }
+          },
+          {
+            path: "/list/card",
+            name: "list-card",
+            component: () => import("../views/List/List-card"),
+            meta: { title: "卡片列表", keepAlive: false, permission: ["R002"] }
+          }
+        ]
       }
     ]
   }
