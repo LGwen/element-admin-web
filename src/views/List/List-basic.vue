@@ -2,7 +2,12 @@
   <el-card class="box-card">
     <div slot="header" class="clearfix">
       <span>基本列表</span>
-      <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button>
+      <div style="float: right;">
+        <el-input placeholder="请输入内容" size="small" prefix-icon="el-icon-search"></el-input>
+      </div>
+    </div>
+    <div>
+      <el-button style="width:100%;margin-bottom:20px;" icon="el-icon-plus" size="small">添加</el-button>
     </div>
     <e-list>
       <e-list-item v-for="l in list" :key="l.id">
@@ -84,6 +89,13 @@ export default {
           person: "张大千",
           finishDate: "2020-05-20",
           id: 4
+        },
+        {
+          name: "一车一码",
+          desc: "防疫小程序",
+          person: "张大千",
+          finishDate: "2020-05-20",
+          id: 5
         }
       ]
     };

@@ -10,7 +10,7 @@
         <div style="padding: 14px;">
           <span></span>
           <div class="bottom clearfix">
-            <time class="time">{{ currentDate }}</time>
+            <time class="time">2020-05-20</time>
             <el-button type="text" class="button">操作按钮</el-button>
           </div>
         </div>
@@ -99,6 +99,7 @@
   overflow: hidden;
   -webkit-box-orient: vertical;
   color: rgba(0, 0, 0, 0.45);
+  margin: 20px 0;
 }
 </style>
 
