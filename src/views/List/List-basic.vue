@@ -7,7 +7,12 @@
       </div>
     </div>
     <div>
-      <el-button style="width:100%;margin-bottom:20px;" icon="el-icon-plus" size="small">添加</el-button>
+      <el-button
+        style="width:100%;margin-bottom:20px;"
+        icon="el-icon-plus"
+        size="small"
+        @click="showAddDialog"
+      >添加</el-button>
     </div>
     <e-list>
       <e-list-item v-for="l in list" :key="l.id">
@@ -29,6 +34,11 @@
             <span>预计结束时间</span>
             <p>{{ l.finishDate }}</p>
           </div>
+          <div>
+            <div style="width:200px;display: inline-block;margin-left: 20px;">
+              <el-progress :percentage="parseInt(Math.random()*50+50)" style="width:200px"></el-progress>
+            </div>
+          </div>
         </template>
         <template slot="action">
           <el-button type="text">编辑</el-button>
@@ -46,6 +56,7 @@
         </template>
       </e-list-item>
     </e-list>
+    <dialog-base :visible.sync="visible" />
   </el-card>
 </template>
 
@@ -57,28 +68,29 @@ console.log(EList);
 export default {
   components: {
     EList,
-    EListItem
+    EListItem,
+    DialogBase: () => import("./dialog-base-add")
   },
   data() {
     return {
       list: [
         {
           name: "潇湘出行",
-          desc: "智能公交",
+          desc: "智能公交，精准预计公交到达时间",
           person: "张大千",
           finishDate: "2020-05-20",
           id: 1
         },
         {
           name: "我的长沙",
-          desc: "政务服务平台",
+          desc: "政务服务平台，便民利民",
           person: "张大千",
           finishDate: "2020-05-20",
           id: 2
         },
         {
           name: "数字星城联盟",
-          desc: "企业信息发布",
+          desc: "企业信息发布，放利企业",
           person: "张大千",
           finishDate: "2020-05-20",
           id: 3
@@ -91,14 +103,20 @@ export default {
           id: 4
         },
         {
-          name: "一车一码",
-          desc: "防疫小程序",
+          name: "生活圈",
+          desc: "一手掌握周边重要生活基础设施",
           person: "张大千",
           finishDate: "2020-05-20",
           id: 5
         }
-      ]
+      ],
+      visible: false
     };
+  },
+  methods: {
+    showAddDialog() {
+      this.visible = true;
+    }
   }
 };
 </script>

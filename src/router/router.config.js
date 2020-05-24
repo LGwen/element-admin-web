@@ -83,7 +83,7 @@ export const rightRouter = [
         name: "form",
         meta: {
           title: "表单页",
-          icon: "menu",
+          icon: "document",
           keepAlive: false,
           permission: ["R002"]
         },

@@ -4,7 +4,7 @@ export default {
   },
   render() {
     // var slots = context.slots
-    console.log(this.$scopedSlots)
+    // console.log(this.$scopedSlots)
     /**
      * var props = context.props,
         slots = context.slots,
