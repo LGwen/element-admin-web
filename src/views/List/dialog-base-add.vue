@@ -1,5 +1,5 @@
 <template>
-  <el-dialog title="添加新任务" :visible.sync="visible" width="500px">
+  <el-dialog title="添加新任务" :visible="visible" width="500px">
     <div style="padding:20px">
       <el-form ref="form" label-width="100px">
         <el-form-item label="名称">
