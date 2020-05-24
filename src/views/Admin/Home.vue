@@ -71,7 +71,7 @@
         </chart-card>
       </el-col>
     </el-row>
-    <div class="chart-container">
+    <el-card>
       <el-tabs v-model="activeName" @tab-click="handleTabClick">
         <el-tab-pane label="用户数" name="first">
           <el-row :gutter="16">
@@ -98,12 +98,25 @@
           </el-row>
         </el-tab-pane>
       </el-tabs>
-    </div>
+    </el-card>
+    <el-row :gutter="16" style="margin-top:20px">
+      <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
+        <el-card header="极坐标">
+          <polar />
+        </el-card>
+      </el-col>
+      <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
+        <el-card header="极坐标">
+          <polar2 />
+        </el-card>
+      </el-col>
+    </el-row>
   </div>
 </template>
 
 <script>
 import { mapActions, mapState } from "vuex";
+
 import { provinces } from "../../config/province";
 const rankdata = [];
 for (let i = 0; i < 8; i++) {
@@ -133,7 +146,9 @@ export default {
     VBar: () => import("../../components/Chart/bar"),
     RankList: () => import("../../components/RankList/rank-list"),
     MiniArea: () => import("../../components/Chart/mini-area"),
-    MiniBar: () => import("../../components/Chart/mini-bar")
+    MiniBar: () => import("../../components/Chart/mini-bar"),
+    polar: () => import("../../components/Chart/polar"),
+    polar2: () => import("../../components/Chart/polar2"),
   },
   data() {
     return {

@@ -61,6 +61,18 @@ export const rightRouter = [
             name: "table-base",
             component: () => import("../views/Table/Table-base"),
             meta: { title: "基础表格", keepAlive: false, permission: ["R002"] }
+          },
+          {
+            path: "/list/basic",
+            name: "list-card",
+            component: () => import("../views/List/List-basic"),
+            meta: { title: "基础列表", keepAlive: false, permission: ["R002"] }
+          },
+          {
+            path: "/list/card",
+            name: "list-card",
+            component: () => import("../views/List/List-card"),
+            meta: { title: "卡片列表", keepAlive: false, permission: ["R002"] }
           }
         ]
       },
@@ -90,32 +102,6 @@ export const rightRouter = [
           }
         ]
       },
-      {
-        path: "/list",
-        component: EmptyLayout,
-        redirect: "/list/card",
-        name: "list",
-        meta: {
-          title: "列表页",
-          icon: "menu",
-          keepAlive: false,
-          permission: ["R002"]
-        },
-        children: [
-          {
-            path: "/list/basic",
-            name: "list-card",
-            component: () => import("../views/List/List-basic"),
-            meta: { title: "基础列表", keepAlive: false, permission: ["R002"] }
-          },
-          {
-            path: "/list/card",
-            name: "list-card",
-            component: () => import("../views/List/List-card"),
-            meta: { title: "卡片列表", keepAlive: false, permission: ["R002"] }
-          }
-        ]
-      }
     ]
   }
 ];
