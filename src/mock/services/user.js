@@ -9,5 +9,14 @@ const info = options => {
   };
   return jsonResult(userInfo, "200", "success");
 };
+const allUser = options => {
+  console.log("options", options);
+  const users = [
+    { id: 2, username: "admin", password: "123456" },
+    { id: 4, username: "zhangdashan222", password: "123456" }
+  ]
+  return jsonResult(users, "200", "success");
+};
 
 Mock.mock(/\/getUserInfo/, "get", info);
+Mock.mock(/\/user\/all/, "get", allUser);
