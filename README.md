@@ -5,7 +5,7 @@
 npm install
 ```
 
-### 变异允许测试环境
+### 编译运行测试环境
 ```
 npm run serve
 ```
