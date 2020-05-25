@@ -6,6 +6,7 @@ import router from './router'
 import './style/'
 import './core/lazy_use'
 import './permission'
+import './mock'
 Vue.config.productionTip = false
 
 new Vue({
