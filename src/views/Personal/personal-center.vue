@@ -90,7 +90,9 @@
                   <div>
                     <el-button type="text">查看详情</el-button>
                     <el-divider direction="vertical"></el-divider>
-                    <el-button type="text">删除</el-button>
+                    <el-popconfirm title="确定删除吗？">
+                      <el-button slot="reference" type="text">删除</el-button>
+                    </el-popconfirm>
                   </div>
                 </div>
               </li>
@@ -129,8 +131,7 @@
                   :size="50"
                   fit="cover"
                   src="https://cube.elemecdn.com/e/fd/0fc7d20532fdaf769a25683617711png.png"
-                >
-                </el-avatar>
+                ></el-avatar>
                 <span slot="name">{{ l.name }}</span>
                 <div slot="desc">{{ l.desc }}</div>
                 <template slot="content">
@@ -222,7 +223,7 @@ export default {
           finishDate: "2020-05-20",
           id: 5
         }
-      ],
+      ]
     };
   },
   computed: {
