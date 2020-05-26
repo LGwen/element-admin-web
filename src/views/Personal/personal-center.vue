@@ -76,27 +76,39 @@
       <el-card>
         <el-tabs v-model="activeName" @tab-click="handleClick">
           <el-tab-pane :label="'消息 ('+4+')'" name="first">
-            <ul v-loading="loading" class="message-list" style="min-height:100px;">
-              <li v-for="m in messages" :key="m.id" class="message-item">
-                <div class="message-item-header">
-                  <div class="message-item-header__title">
-                    <h4>{{ m.title }}</h4>
+            <div v-loading="loading">
+              <ul class="message-list" style="min-height:100px;">
+                <li v-for="m in messages" :key="m.id" class="message-item">
+                  <div class="message-item-header">
+                    <div class="message-item-header__title">
+                      <h4>{{ m.title }}</h4>
+                    </div>
+                    <div class="message-item-header__sub">from：张大山</div>
                   </div>
-                  <div class="message-item-header__sub">from：张大山</div>
-                </div>
-                <div class="message-item-content">{{ m.content }}</div>
-                <div class="message-item-footer">
-                  <div>{{ m.time }}</div>
-                  <div>
-                    <el-button type="text">查看详情</el-button>
-                    <el-divider direction="vertical"></el-divider>
-                    <el-popconfirm title="确定删除吗？">
-                      <el-button slot="reference" type="text">删除</el-button>
-                    </el-popconfirm>
+                  <div class="message-item-content">{{ m.content }}</div>
+                  <div class="message-item-footer">
+                    <div>{{ m.time }}</div>
+                    <div>
+                      <el-button type="text">查看详情</el-button>
+                      <el-divider direction="vertical"></el-divider>
+                      <el-popconfirm title="确定删除吗？">
+                        <el-button slot="reference" type="text">删除</el-button>
+                      </el-popconfirm>
+                    </div>
                   </div>
-                </div>
-              </li>
-            </ul>
+                </li>
+              </ul>
+              <div class="personal-pagination">
+                <el-pagination
+                  :current-page.sync="currentPage1"
+                  :page-size="100"
+                  layout="prev, pager, next, jumper"
+                  :total="1000"
+                  @size-change="handleSizeChange"
+                  @current-change="handleCurrentChange"
+                ></el-pagination>
+              </div>
+            </div>
           </el-tab-pane>
           <el-tab-pane :label="'缺陷 ('+4+')'" name="second">
             <ul v-loading="loading" class="message-list" style="min-height:100px;">
@@ -223,7 +235,8 @@ export default {
           finishDate: "2020-05-20",
           id: 5
         }
-      ]
+      ],
+      currentPage1: 5
     };
   },
   computed: {
@@ -264,12 +277,22 @@ export default {
             console.log(err);
           });
       }
+    },
+    handleSizeChange(val) {
+      console.log(`每页 ${val} 条`);
+    },
+    handleCurrentChange(val) {
+      console.log(`当前页: ${val}`);
     }
   }
 };
 </script>
 
 <style lang='less' scoped>
+.personal-pagination {
+  text-align: right;
+  margin: 20px 0;
+}
 .person-info {
   &__avatar {
     text-align: center;
@@ -341,6 +364,7 @@ export default {
       font-size: 14px;
       margin-top: 12px;
       color: rgba(0, 0, 0, 0.45);
+      padding-right: 120px;
     }
     &-footer {
       font-size: 13px;
