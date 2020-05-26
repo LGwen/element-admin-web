@@ -43,13 +43,6 @@ export default {
       ]
     };
   },
-  watch: {
-    // value(val, oldVal) {
-    //   console.log("value watch~~>", val, oldVal);
-    //   this.editorCtx = val;
-    //   this.editor.txt.html(val);
-    // }
-  },
   mounted() {
     this.editorCtx = this.value;
     this.initEditor();
