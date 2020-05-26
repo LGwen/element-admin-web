@@ -102,6 +102,26 @@ export const rightRouter = [
           }
         ]
       },
+      {
+        path: "/personal",
+        component: EmptyLayout,
+        redirect: "/personal/info",
+        name: "personal",
+        meta: {
+          title: "个人中心",
+          icon: "user",
+          keepAlive: false,
+          permission: ["R002"]
+        },
+        children: [
+          {
+            path: "/personal/info",
+            name: "personal-info",
+            component: () => import("../views/Personal/personal-center"),
+            meta: { title: "个人主页", keepAlive: false, permission: ["R002"] }
+          }
+        ]
+      },
     ]
   }
 ];

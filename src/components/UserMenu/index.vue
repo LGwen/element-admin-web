@@ -28,7 +28,7 @@
         </span>
       </div>
       <el-dropdown-menu slot="dropdown">
-        <!-- <el-dropdown-item command="personal-center">个人中心</el-dropdown-item> -->
+        <el-dropdown-item command="personal-center">个人中心</el-dropdown-item>
 
         <el-dropdown-item command="logout">退出登录</el-dropdown-item>
       </el-dropdown-menu>
@@ -73,7 +73,10 @@ export default {
       if (command === "logout") {
         this.handleLogout();
       }
-      this.$message("click on item " + command);
+      if (command === "personal-center") {
+        this.$router.push({ path: "/personal/info" });
+      }
+      this.$message("点击了" + command);
     }
   }
 };
