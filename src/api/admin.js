@@ -96,3 +96,11 @@ export function getMessage() {
   });
 }
 
+// 获取缺陷
+export function getProblem() {
+  return axios({
+    url: api.getProblem,
+    method: "get",
+    data: {}
+  });
+}

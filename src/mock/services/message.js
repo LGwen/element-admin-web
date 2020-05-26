@@ -37,4 +37,43 @@ const message = () => {
   ];
   return jsonResult(msg, 200, "success");
 };
+
+const problem = () => {
+  const pbm = [
+    {
+      title: "获取用户信息接口错误",
+      time: "10分钟前",
+      content:
+        "点击个人中心，然后预览个人信息是调用获取用户信息接口返回404",
+      from: "刘威",
+      id: 1
+    },
+    {
+      title: "首页页面样式错位",
+      time: "昨天",
+      content:
+        "首页页面部分手机样式错位，导航栏位置偏下，测试手机型号华为MATA30",
+      from: "刘威",
+      id: 2
+    },
+    {
+      title: "获取社保信息错误",
+      time: "昨天",
+      content:
+        "查看社保信息是调用获取个人社保信息接口，获取信息显示服务器错误，建议和第三方对接处理",
+      from: "曾咣",
+      id: 3
+    },
+    {
+      title: "建议搜索没有查询结果页面添加空背景图",
+      time: "刚刚",
+      content:
+        "首页改版搜索，当输入关键字，点击确认搜索，返回结果没有时，页面空白显示，用户体验较差建议添加背景图，提示用户没有查询到搜索结果",
+      from: "王梅子",
+      id: 4
+    }
+  ];
+  return jsonResult(pbm, 200, "success");
+};
 Mock.mock(/\/message\/get/, "get", message);
+Mock.mock(/\/problem\/get/, "get", problem);

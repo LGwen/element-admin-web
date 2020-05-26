@@ -4,6 +4,7 @@ const api = {
   addUser: "/user/add",
   updateUser: "/user/update",
   deleteUser: "/user/delete",
-  getMessage: "/message/get"
+  getMessage: "/message/get",
+  getProblem: "/problem/get"
 };
 export default api;

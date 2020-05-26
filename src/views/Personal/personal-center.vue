@@ -4,7 +4,7 @@
       <el-card style="margin-bottom:16px">
         <div class="person-info">
           <div class="person-info__avatar">
-            <el-avatar :size="80" src="https://empty">
+            <el-avatar :size="80">
               <img
                 src="https://cube.elemecdn.com/e/fd/0fc7d20532fdaf769a25683617711png.png"
                 alt="头像"
@@ -76,7 +76,7 @@
       <el-card>
         <el-tabs v-model="activeName" @tab-click="handleClick">
           <el-tab-pane label="消息 (5)" name="first">
-            <ul class="message-list">
+            <ul v-loading="loading" class="message-list" style="min-height:100px;">
               <li v-for="m in messages" :key="m.id" class="message-item">
                 <div class="message-item-header">
                   <div class="message-item-header__title">
@@ -96,7 +96,27 @@
               </li>
             </ul>
           </el-tab-pane>
-          <el-tab-pane label="缺陷" name="second">缺陷</el-tab-pane>
+          <el-tab-pane label="缺陷" name="second">
+            <ul v-loading="loading" class="message-list" style="min-height:100px;">
+              <li v-for="m in problems" :key="m.id" class="message-item">
+                <div class="message-item-header">
+                  <div class="message-item-header__title">
+                    <h4>{{ m.title }}</h4>
+                  </div>
+                  <div class="message-item-header__sub">from：张大山</div>
+                </div>
+                <div class="message-item-content">{{ m.content }}</div>
+                <div class="message-item-footer">
+                  <div>{{ m.time }}</div>
+                  <div>
+                    <el-button type="text">查看详情</el-button>
+                    <el-divider direction="vertical"></el-divider>
+                    <el-button type="text">删除</el-button>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </el-tab-pane>
           <el-tab-pane label="新需求" name="third">新需求</el-tab-pane>
         </el-tabs>
       </el-card>
@@ -110,29 +130,48 @@ export default {
   name: "PersonalCenter",
   data() {
     return {
-      activeName: "first"
+      activeName: "first",
+      loading: false
     };
   },
   computed: {
     ...mapState("user", ["userInfo"]),
-    ...mapState("message", ["messages"])
+    ...mapState("message", ["messages", "problems"])
   },
   mounted() {
     this.loadData();
   },
   methods: {
-    ...mapActions("message", ["getMessage"]),
+    ...mapActions("message", ["getMessage", "getProblem"]),
     loadData() {
+      this.loading = true;
       this.getMessage()
         .then(message => {
           console.log("getMessage:", message);
+          this.loading = false;
         })
         .catch(err => {
           console.log(err);
+          this.loading = false;
         });
     },
     handleClick(tab, event) {
-      console.log(tab, event);
+      console.log(tab.name, event);
+      if (tab.name === "second") {
+        if (this.problems && this.problems.length) {
+          return;
+        }
+        this.loading = true;
+        this.getProblem()
+          .then(problem => {
+            this.loading = false;
+            console.log("getProblem:", problem);
+          })
+          .catch(err => {
+            this.loading = false;
+            console.log(err);
+          });
+      }
     }
   }
 };
