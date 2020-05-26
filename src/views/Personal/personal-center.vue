@@ -39,9 +39,9 @@
               <div class="detail-item__right">1989-02-19</div>
             </div>
           </div>
-          <el-divider content-position="left">完成认证</el-divider>
+          <el-divider content-position="left">技术认证</el-divider>
           <div>
-            <el-tag size="small">TCA</el-tag>
+            <el-tag size="small">TCA架构</el-tag>
             <el-tag size="small">应用加固</el-tag>
             <el-tag size="small">蓝盾</el-tag>
             <el-tag size="small">CMQ</el-tag>
