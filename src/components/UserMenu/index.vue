@@ -3,7 +3,7 @@
     <el-avatar icon="el-icon-user-solid"></el-avatar>
     <el-dropdown @command="handleCommand">
       <span class="el-dropdown-link">
-        GWen
+        {{userInfo.username}}
         <i class="el-icon-arrow-down el-icon--right"></i>
       </span>
       <el-dropdown-menu slot="dropdown">

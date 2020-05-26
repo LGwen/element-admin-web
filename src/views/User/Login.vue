@@ -3,10 +3,10 @@
     <div class="login-logo">element</div>
     <el-form :inline="false" :model="formInline">
       <el-form-item>
-        <el-input v-model="formInline.username" placeholder="账号"></el-input>
+        <el-input v-model="formInline.username" placeholder="账号：admin"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-input v-model="formInline.password" type="password" placeholder="密码"></el-input>
+        <el-input v-model="formInline.password" type="password" placeholder="密码：123456"></el-input>
       </el-form-item>
       <el-form-item>
         <div class="form-sumbit">
