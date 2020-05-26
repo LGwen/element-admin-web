@@ -7,6 +7,7 @@
           <user-menu />
         </div>
       </el-header>
+      <!-- <e-header></e-header> -->
       <el-main class="el-main-contentbox">
         <div>
           <multi-tab></multi-tab>
@@ -23,15 +24,15 @@
 <script>
 import EMenu from "@/components/EMenu/index";
 import UserMenu from "@/components/UserMenu/index";
-import Breadcrumb from "@/components/Breadcrumb/breadcrumb";
+import EHeader from "@/components/EHeader/index"
 import MultiTab from "@/components/MultiTab/multi-tab"
 import { mapGetters } from "vuex";
 export default {
   components: {
     EMenu,
     UserMenu,
-    Breadcrumb,
-    MultiTab
+    MultiTab,
+    EHeader
   },
   computed: {
     ...mapGetters(["addRouters"])

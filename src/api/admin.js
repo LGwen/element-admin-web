@@ -1,7 +1,6 @@
 import { axios } from "@/utils/request";
 import api from './config'
 // import Qs from "qs";
-// import config from "./config";
 // =================系统服务====================/
 export function login(param) {
   return axios({
@@ -88,3 +87,12 @@ export function deleteUser(param) {
     data: param
   });
 }
+// 获取个人消息
+export function getMessage() {
+  return axios({
+    url: api.getMessage,
+    method: "get",
+    data: {}
+  });
+}
+

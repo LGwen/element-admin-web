@@ -1,26 +1,14 @@
 <template>
   <div class="user-menu-box">
-    <el-popover placement="bottom" width="200" trigger="hover">
-      <div>
-        <div class="user-message-item">
-          <div class="message-item__icon"><i class="el-icon-chat-line-square"></i></div>
-          <div class="message-item__content">
-            <div class="message-item__content__title">您收到了新的任务</div>
-            <div class="message-item__content__desc">10分钟前</div>
+    <el-popover placement="bottom" width="200" trigger="hover" @show="loadData">
+      <div v-loading="loading" style="min-height:80px">
+        <div v-for="m in messages" :key="m.id" class="user-message-item">
+          <div class="message-item__icon">
+            <i class="el-icon-chat-line-square"></i>
           </div>
-        </div>
-        <div class="user-message-item">
-          <div class="message-item__icon"><i class="el-icon-chat-line-square"></i></div>
           <div class="message-item__content">
-            <div class="message-item__content__title">本周周报</div>
-            <div class="message-item__content__desc">10分钟前</div>
-          </div>
-        </div>
-        <div class="user-message-item">
-          <div class="message-item__icon"><i class="el-icon-chat-line-square"></i></div>
-          <div class="message-item__content">
-            <div class="message-item__content__title">第一轮测试结果反馈</div>
-            <div class="message-item__content__desc">10分钟前</div>
+            <div class="message-item__content__title">{{ m.title }}</div>
+            <div class="message-item__content__desc">{{ m.time }}</div>
           </div>
         </div>
       </div>
@@ -51,11 +39,30 @@
 <script>
 import { mapActions, mapState } from "vuex";
 export default {
+  data: () => {
+    return {
+      loading: false
+    };
+  },
   computed: {
-    ...mapState("user", ["userInfo", "roles"])
+    ...mapState("user", ["userInfo", "roles"]),
+    ...mapState("message", ["messages"])
   },
   methods: {
     ...mapActions("user", ["logout"]),
+    ...mapActions("message", ["getMessage"]),
+    loadData() {
+      this.loading = true;
+      this.getMessage()
+        .then(message => {
+          this.loading = false;
+          console.log("getMessage:", message);
+        })
+        .catch(err => {
+          console.log(err);
+          this.loading = false;
+        });
+    },
     handleLogout() {
       this.logout().then(res => {
         this.$router.push("/user/login");
@@ -72,30 +79,30 @@ export default {
 };
 </script>
 <style lang='less'>
-.user-message-item{
+.user-message-item {
   display: flex;
   align-items: flex-start;
   padding: 10px;
-  &:not(:last-child){
-    border-bottom: 1px solid #DCDFE6;
+  &:not(:last-child) {
+    border-bottom: 1px solid #dcdfe6;
   }
-  .message-item__icon{
+  .message-item__icon {
     width: 30px;
     height: 30px;
     flex-shrink: 0;
     flex-grow: 0;
     font-size: 18px;
   }
-  .message-item__content{
+  .message-item__content {
     flex: 0 0 auto;
-    &__title{
+    &__title {
       font-size: 15px;
       margin-bottom: 4px;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
     }
-    &__desc{
+    &__desc {
       font-size: 13px;
       color: rgba(0, 0, 0, 0.45);
       white-space: nowrap;
@@ -125,6 +132,7 @@ export default {
 }
 .el-badge i {
   font-size: 20px;
+  color: #c0c4cc;
 }
 
 .user-menu-box .el-avatar {
