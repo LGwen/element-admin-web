@@ -125,8 +125,36 @@
                 <div class="message-item-content">
                   <div>{{ m.content }}</div>
                   <div class="problem-status">
-                    <div>严重程度:一般</div>
-                    <div>状态:处理中</div>
+                    <template v-if="m.status==1">
+                      <div>
+                        严重程度:
+                        <span class="normal">一般</span>
+                      </div>
+                      <div>
+                        状态:
+                        <span class="normal">处理中</span>
+                      </div>
+                    </template>
+                    <template v-if="m.status==2">
+                      <div>
+                        严重程度:
+                        <span class="warn">紧急</span>
+                      </div>
+                      <div>
+                        状态:
+                        <span class="warn">处理中</span>
+                      </div>
+                    </template>
+                    <template v-if="m.status==3">
+                      <div>
+                        严重程度:
+                        <span class="danger">严重</span>
+                      </div>
+                      <div>
+                        状态:
+                        <span class="normal">已关闭</span>
+                      </div>
+                    </template>
                   </div>
                 </div>
 
@@ -300,13 +328,32 @@ export default {
   text-align: right;
   margin: 20px 0;
 }
-.problem-status{
+.problem-status {
   margin-top: 12px;
-  div{
-    display: inline;
+  div {
+    display: inline-block;
+    vertical-align: middle;
     margin-right: 10px;
     font-size: 12px;
     color: rgba(0, 0, 0, 0.65);
+  }
+  .normal,
+  .warn,
+  .danger {
+    display: inline-block;
+    border-radius: 2px;
+    padding: 0 4px;
+    color: #fff;
+    margin-left: 4px;
+  }
+  .normal {
+    background: #98b0cf;
+  }
+  .warn {
+    background: #f66062;
+  }
+  .danger {
+    background: #f66062;
   }
 }
 .person-info {
