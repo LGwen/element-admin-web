@@ -122,7 +122,14 @@
                     <span>处理人：张大山</span>
                   </div>
                 </div>
-                <div class="message-item-content">{{ m.content }}</div>
+                <div class="message-item-content">
+                  <div>{{ m.content }}</div>
+                  <div class="problem-status">
+                    <div>严重程度:一般</div>
+                    <div>状态:处理中</div>
+                  </div>
+                </div>
+
                 <div class="message-item-footer">
                   <div>{{ m.time }}</div>
                   <div>
@@ -292,6 +299,15 @@ export default {
 .personal-pagination {
   text-align: right;
   margin: 20px 0;
+}
+.problem-status{
+  margin-top: 12px;
+  div{
+    display: inline;
+    margin-right: 10px;
+    font-size: 12px;
+    color: rgba(0, 0, 0, 0.65);
+  }
 }
 .person-info {
   &__avatar {
