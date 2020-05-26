@@ -126,7 +126,7 @@
                 <div class="message-item-footer">
                   <div>{{ m.time }}</div>
                   <div>
-                    <el-button type="text">查看详情</el-button>
+                    <el-button type="text">流转记录</el-button>
                     <el-divider direction="vertical"></el-divider>
                     <el-button type="text">处理</el-button>
                   </div>
