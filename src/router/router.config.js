@@ -99,6 +99,12 @@ export const rightRouter = [
             name: "form-step",
             component: () => import("../views/Form/Form-step"),
             meta: { title: "步骤表单", keepAlive: false, permission: ["R002"] }
+          },
+          {
+            path: "/form/editor",
+            name: "form-editor",
+            component: () => import("../views/Form/Form-editor"),
+            meta: { title: "富文本", keepAlive: false, permission: ["R002"] }
           }
         ]
       },
