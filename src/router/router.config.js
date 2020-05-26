@@ -64,7 +64,7 @@ export const rightRouter = [
           },
           {
             path: "/list/basic",
-            name: "list-card",
+            name: "list-basic",
             component: () => import("../views/List/List-basic"),
             meta: { title: "基础列表", keepAlive: false, permission: ["R002"] }
           },
