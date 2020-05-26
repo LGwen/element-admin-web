@@ -128,8 +128,9 @@
                   shape="square"
                   :size="50"
                   fit="cover"
-                  src="https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg"
-                ></el-avatar>
+                  src="https://cube.elemecdn.com/e/fd/0fc7d20532fdaf769a25683617711png.png"
+                >
+                </el-avatar>
                 <span slot="name">{{ l.name }}</span>
                 <div slot="desc">{{ l.desc }}</div>
                 <template slot="content">
